@@ -1,6 +1,5 @@
 const name = process.argv[2]; //e.g. model-1m
 const data = require(`./data/${name}.json`);
-const fudge = 1.1; // 1.1 = 10% larger for covering outside of dome
 
 function print(tag, number) {
     console.log(`${tag}: ${(number * 100).toFixed(1)} cm`);
@@ -24,9 +23,16 @@ print('dome height', radius);
 
 printBreak();
 
+
+const fudge = 1.1; // 1.1 = 10% larger for covering outside of dome
+const marks = data.marks.map((m) => {
+    return m * fudge;
+});
+const fabricHeight = data.height * fudge;
+
 //widest mark (for a pair of leaves in AV position)
-const middleWidth = data.marks[5];
-const baseWidth = data.marks[0];
+const middleWidth = marks[5];
+const baseWidth = marks[0];
 
 // //first leaf keypoints
 print('base1-L', 0);
@@ -38,7 +44,11 @@ print('base1-R', baseWidth);
 printBreak();
 
 // //second leaf keypoints
-const margin = 0;
+const margin = fabricHeight / 10; //space between leaves on fabric (to reduce precise cutting requriements)
+
+print('margin', margin);
+printBreak();
+
 const offset = ((baseWidth/2) + (middleWidth) - (baseWidth/2)) + margin;
 
 print('base2-L', offset);
@@ -48,12 +58,13 @@ print('base2-R', offset + baseWidth);
 
 printBreak();
 
+
 // fabric height measurements
 
-print('fabric height', data.height);
+print('fabric height', fabricHeight);
 
-const unitHeight = data.height / data.marks.length;
-for (let i = 0; i < data.marks.length; i++) {
+const unitHeight = data.height / marks.length;
+for (let i = 0; i < marks.length; i++) {
     print(`h${i}`, i*unitHeight);
 }
 
@@ -61,8 +72,8 @@ printBreak();
 
 
 print('fabric width', baseWidth);
-for (let i = 0; i < data.marks.length; i++) {
-    print(`w${i}`, data.marks[i]);
+for (let i = 0; i < marks.length; i++) {
+    print(`w${i}`, marks[i]);
 }
 
 
