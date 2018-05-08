@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node index.js $1", 
     "model": "node index.js model-1m",
-    "real": "node index.js real-8m",
+    "model-tiny": "node index.js model-tiny",
+    "real-6": "node index.js real-8m",
+    "real-5": "node index.js real-8m-b",
+    "real-4": "node index.js real-8m-c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

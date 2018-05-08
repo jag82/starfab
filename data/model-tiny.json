@@ -1,0 +1,15 @@
+{
+    "description": "model of stardome with 0.3m bows",
+    "bows": 0.3,
+    "leaves": 4,
+    "marks": [
+        0.149, 
+        0.142, 
+        0.121, 
+        0.088, 
+        0.046, 
+        0.000
+    ],
+    "height": 0.149,
+    "width": 2.00
+}

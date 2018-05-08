@@ -31,7 +31,7 @@ const marks = data.marks.map((m) => {
 const fabricHeight = data.height * fudge;
 
 //widest mark (for a pair of leaves in AV position)
-const middleWidth = marks[5];
+const middleWidth = marks[Math.ceil((marks.length-1)/2)];
 const baseWidth = marks[0];
 const margin = .055;// .055m = 5.5cm 
 const offset = ((baseWidth/2) + (middleWidth) - (baseWidth/2)) + margin;
@@ -74,6 +74,7 @@ print('fabric height', fabricHeight);
 printBreak();
 
 
+
 // print('fabric width', baseWidth);
 for (let i = 0; i < marks.length; i++) {
     print(`w${i}/2`, marks[i]/2);
@@ -82,5 +83,7 @@ for (let i = 0; i < marks.length; i++) {
 }
 
 
+//TODO: middle width calc is incorrect because of even number of divions (midindex of a 4 item array is 2.5!)
+print('halfleafwidth pattern', middleWidth + margin)
 
 

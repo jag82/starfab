@@ -1,0 +1,15 @@
+{
+    "description": "real build of stardome with 8m bows",
+    "bows": 8,
+    "leaves": 5,
+    "marks": [
+        3.198, 
+        3.041, 
+        2.587, 
+        1.878, 
+        0.986, 
+        0.000
+    ],
+    "height": 4.00,
+    "width": 16.00
+}
